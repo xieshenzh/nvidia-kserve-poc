@@ -1,0 +1,41 @@
+apiVersion: serving.kserve.io/v1alpha1
+kind: ServingRuntime
+metadata:
+  name: kserve-llm-nvidia-nim
+spec:
+  annotations:
+    prometheus.kserve.io/port: '8012'
+    prometheus.kserve.io/path: "/metrics"
+  supportedModelFormats:
+    - name: llm-nvidia-nim
+      version: "1"
+      autoSelect: true
+      priority: 1
+  protocolVersions:
+    - v2
+    - grpc-v2
+  containers:
+    - name: kserve-container
+      image: nvcr.io/nvidian/sae/kserve-test:dev-24.02.1
+      env:
+        - name: MODEL_NAME
+          value: TBD
+      ports:
+        - containerPort: 8080 # TODO, get this working
+          protocol: TCP
+      args:
+        - /runme.sh
+        - nemollm_inference_ms
+        - --model={{.Name}}
+        - --openai_port=8080
+        - --nemo_port=8004
+        - --num_gpus=1
+        - --health_port=8012
+      resources: # TODO: GPU Resource Requests should go in the model
+        requests:
+          cpu: "12"
+          memory: 128Gi
+        limits:
+          cpu: "12"
+          memory: 256Gi
+

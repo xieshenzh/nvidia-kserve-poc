@@ -1,0 +1,177 @@
+
+==================================
+== Triton Inference Server Base ==
+==================================
+
+NVIDIA Release 23.12 (build 77457706)
+
+Copyright (c) 2018-2023, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+/usr/local/lib/python3.10/dist-packages/pydantic/_internal/_fields.py:151: UserWarning: Field "model_id" has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+[2024-04-15 18:14:45 +0000] [164] [INFO] Starting gunicorn 21.2.0
+[2024-04-15 18:14:45 +0000] [164] [INFO] Listening at: http://0.0.0.0:8004 (164)
+[2024-04-15 18:14:45 +0000] [164] [INFO] Using worker: uvicorn.workers.UvicornWorker
+[2024-04-15 18:14:45 +0000] [167] [INFO] Starting gunicorn 21.2.0
+[2024-04-15 18:14:45 +0000] [168] [INFO] Booting worker with pid: 168
+[2024-04-15 18:14:45 +0000] [167] [INFO] Listening at: http://0.0.0.0:8080 (167)
+[2024-04-15 18:14:45 +0000] [167] [INFO] Using worker: uvicorn.workers.UvicornWorker
+{"level": "DEBUG", "file_path": "/usr/lib/python3.10/asyncio/selector_events.py", "line_number": 54, "request_id": "None", "time": "2024-04-15 18:14:45,277277", "message": "Using selector: EpollSelector"}
+{"level": "DEBUG", "file_path": "/usr/local/lib/python3.10/dist-packages/inferencemodeltoolkit/clients/triton/client.py", "line_number": 275, "request_id": "None", "time": "2024-04-15 18:14:45,278278", "message": "Connecting to grpc://0.0.0.0:8001"}
+[2024-04-15 18:14:45 +0000] [170] [INFO] Booting worker with pid: 170
+[2024-04-15 18:14:45 +0000] [169] [INFO] Starting gunicorn 21.2.0
+[2024-04-15 18:14:45 +0000] [169] [ERROR] Connection in use: ('0.0.0.0', 8012)
+[2024-04-15 18:14:45 +0000] [169] [ERROR] Retrying in 1 second.
+{"level": "DEBUG", "file_path": "/usr/lib/python3.10/asyncio/selector_events.py", "line_number": 54, "request_id": "None", "time": "2024-04-15 18:14:45,282282", "message": "Using selector: EpollSelector"}
+{"level": "DEBUG", "file_path": "/usr/local/lib/python3.10/dist-packages/inferencemodeltoolkit/clients/triton/client.py", "line_number": 275, "request_id": "None", "time": "2024-04-15 18:14:45,283283", "message": "Connecting to grpc://0.0.0.0:8001"}
+{"level": "DEBUG", "file_path": "/usr/lib/python3.10/asyncio/selector_events.py", "line_number": 54, "request_id": "None", "time": "2024-04-15 18:14:45,289289", "message": "Using selector: EpollSelector"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:14:45,291291", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "DEBUG", "file_path": "/usr/lib/python3.10/asyncio/selector_events.py", "line_number": 54, "request_id": "None", "time": "2024-04-15 18:14:45,295295", "message": "Using selector: EpollSelector"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:14:45,296296", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+[TensorRT-LLM][WARNING] gpu_device_ids is not specified, will be automatically set
+[TensorRT-LLM][WARNING] max_beam_width is not specified, will use default value of 1
+[TensorRT-LLM][WARNING] max_tokens_in_paged_kv_cache is not specified, will use default value
+[TensorRT-LLM][WARNING] batch_scheduler_policy parameter was not found or is invalid (must be max_utilization or guaranteed_no_evict)
+[TensorRT-LLM][WARNING] enable_chunked_context is not specified, will be set to false.
+[TensorRT-LLM][WARNING] kv_cache_free_gpu_mem_fraction is not specified, will use default value of 0.9 or max_tokens_in_paged_kv_cache
+[TensorRT-LLM][WARNING] exclude_input_in_output is not specified, will be set to false
+[TensorRT-LLM][WARNING] max_attention_window_size is not specified, will use default value (i.e. max_sequence_length)
+[TensorRT-LLM][WARNING] enable_kv_cache_reuse is not specified, will be set to false
+[TensorRT-LLM][WARNING] Parameter version cannot be read from json:
+[TensorRT-LLM][WARNING] [json.exception.out_of_range.403] key 'version' not found
+[TensorRT-LLM][INFO] No engine version found in the config file, assuming engine(s) built by old builder API.
+[TensorRT-LLM][WARNING] Parameter head_size cannot be read from json:
+[TensorRT-LLM][WARNING] [json.exception.out_of_range.403] key 'head_size' not found
+[TensorRT-LLM][WARNING] Parameter max_lora_rank cannot be read from json:
+[TensorRT-LLM][WARNING] [json.exception.out_of_range.403] key 'max_lora_rank' not found
+[TensorRT-LLM][WARNING] Parameter max_draft_len cannot be read from json:
+[TensorRT-LLM][WARNING] [json.exception.out_of_range.403] key 'max_draft_len' not found
+[TensorRT-LLM][WARNING] lora_plugin enabled, but no lora module enabled: setting useLoraPlugin to false
+[TensorRT-LLM][INFO] Initializing MPI with thread mode 1
+[TensorRT-LLM][INFO] MPI size: 1, rank: 0
+[TensorRT-LLM][INFO] Rank 0 is using GPU 0
+[2024-04-15 18:14:46 +0000] [169] [ERROR] Connection in use: ('0.0.0.0', 8012)
+[2024-04-15 18:14:46 +0000] [169] [ERROR] Retrying in 1 second.
+[2024-04-15 18:14:47 +0000] [169] [ERROR] Connection in use: ('0.0.0.0', 8012)
+[2024-04-15 18:14:47 +0000] [169] [ERROR] Retrying in 1 second.
+[2024-04-15 18:14:48 +0000] [169] [ERROR] Connection in use: ('0.0.0.0', 8012)
+[2024-04-15 18:14:48 +0000] [169] [ERROR] Retrying in 1 second.
+[2024-04-15 18:14:49 +0000] [169] [ERROR] Connection in use: ('0.0.0.0', 8012)
+[2024-04-15 18:14:49 +0000] [169] [ERROR] Retrying in 1 second.
+[2024-04-15 18:14:50 +0000] [169] [ERROR] Can't connect to ('0.0.0.0', 8012)
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:14:55,301301", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:14:55,307307", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:15:05,312312", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:15:05,317317", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:15:15,322322", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:15:15,328328", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:15:25,333333", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:15:25,339339", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:15:35,344344", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:15:35,349349", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:15:45,354354", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:15:45,360360", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:15:55,365365", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:15:55,370370", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:16:05,376376", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:16:05,381381", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:16:15,377377", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:16:15,392392", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+[TensorRT-LLM][INFO] TRTGptModel maxNumSequences: 64
+[TensorRT-LLM][INFO] TRTGptModel maxBatchSize: 64
+[TensorRT-LLM][INFO] TRTGptModel mMaxAttentionWindowSize: 8192
+[TensorRT-LLM][INFO] TRTGptModel enableTrtOverlap: 0
+[TensorRT-LLM][INFO] TRTGptModel normalizeLogProbs: 0
+[TensorRT-LLM][INFO] Loaded engine size: 12855 MiB
+[TensorRT-LLM][ERROR] 6: The engine plan file is generated on an incompatible device, expecting compute 7.5 got compute 8.0, please rebuild.
+[TensorRT-LLM][ERROR] 2: [engine.cpp::deserializeEngine::1148] Error Code 2: Internal Error (Assertion engine->deserialize(start, size, allocator, runtime) failed. )
+E0415 18:16:24.818291 246 backend_model.cc:635] ERROR: Failed to create instance: unexpected error when creating modelInstanceState: [TensorRT-LLM][ERROR] Assertion failed: Failed to deserialize cuda engine (/app/tensorrt_llm/cpp/tensorrt_llm/runtime/tllmRuntime.cpp:72)
+1       0x7fe1e02614ba tensorrt_llm::common::throwRuntimeError(char const*, int, std::string const&) + 102
+2       0x7fe1e02850a0 /opt/tritonserver/backends/tensorrtllm/libtensorrt_llm.so(+0x79c0a0) [0x7fe1e02850a0]
+3       0x7fe1e214f742 tensorrt_llm::batch_manager::TrtGptModelInflightBatching::TrtGptModelInflightBatching(int, std::shared_ptr<nvinfer1::ILogger>, tensorrt_llm::runtime::GptModelConfig const&, tensorrt_llm::runtime::WorldConfig const&, std::vector<unsigned char, std::allocator<unsigned char> > const&, bool, tensorrt_llm::batch_manager::batch_scheduler::SchedulerPolicy, tensorrt_llm::batch_manager::TrtGptModelOptionalParams const&) + 1138
+4       0x7fe1e2125977 tensorrt_llm::batch_manager::TrtGptModelFactory::create(std::filesystem::path const&, tensorrt_llm::batch_manager::TrtGptModelType, int, tensorrt_llm::batch_manager::batch_scheduler::SchedulerPolicy, tensorrt_llm::batch_manager::TrtGptModelOptionalParams const&) + 1687
+5       0x7fe1e211ce00 tensorrt_llm::batch_manager::GptManager::GptManager(std::filesystem::path const&, tensorrt_llm::batch_manager::TrtGptModelType, int, tensorrt_llm::batch_manager::batch_scheduler::SchedulerPolicy, std::function<std::list<std::shared_ptr<tensorrt_llm::batch_manager::InferenceRequest>, std::allocator<std::shared_ptr<tensorrt_llm::batch_manager::InferenceRequest> > > (int)>, std::function<void (unsigned long, std::list<tensorrt_llm::batch_manager::NamedTensor, std::allocator<tensorrt_llm::batch_manager::NamedTensor> > const&, bool, std::string const&)>, std::function<std::unordered_set<unsigned long, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<unsigned long> > ()>, std::function<void (std::string const&)>, tensorrt_llm::batch_manager::TrtGptModelOptionalParams const&, std::optional<unsigned long>, std::optional<int>, bool) + 336
+6       0x7fe290211b62 /opt/tritonserver/backends/tensorrtllm/libtriton_tensorrtllm.so(+0x18b62) [0x7fe290211b62]
+7       0x7fe2902123f2 /opt/tritonserver/backends/tensorrtllm/libtriton_tensorrtllm.so(+0x193f2) [0x7fe2902123f2]
+8       0x7fe290204fd5 TRITONBACKEND_ModelInstanceInitialize + 101
+9       0x7fe2a2f89226 /opt/tritonserver/bin/../lib/libtritonserver.so(+0x1a7226) [0x7fe2a2f89226]
+10      0x7fe2a2f8a466 /opt/tritonserver/bin/../lib/libtritonserver.so(+0x1a8466) [0x7fe2a2f8a466]
+11      0x7fe2a2f6d165 /opt/tritonserver/bin/../lib/libtritonserver.so(+0x18b165) [0x7fe2a2f6d165]
+12      0x7fe2a2f6d7a6 /opt/tritonserver/bin/../lib/libtritonserver.so(+0x18b7a6) [0x7fe2a2f6d7a6]
+13      0x7fe2a2f79a1d /opt/tritonserver/bin/../lib/libtritonserver.so(+0x197a1d) [0x7fe2a2f79a1d]
+14      0x7fe2a25e3ee8 /usr/lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x7fe2a25e3ee8]
+15      0x7fe2a2f63feb /opt/tritonserver/bin/../lib/libtritonserver.so(+0x181feb) [0x7fe2a2f63feb]
+16      0x7fe2a2f73dc5 /opt/tritonserver/bin/../lib/libtritonserver.so(+0x191dc5) [0x7fe2a2f73dc5]
+17      0x7fe2a2f78d36 /opt/tritonserver/bin/../lib/libtritonserver.so(+0x196d36) [0x7fe2a2f78d36]
+18      0x7fe2a3069330 /opt/tritonserver/bin/../lib/libtritonserver.so(+0x287330) [0x7fe2a3069330]
+19      0x7fe2a306ca23 /opt/tritonserver/bin/../lib/libtritonserver.so(+0x28aa23) [0x7fe2a306ca23]
+20      0x7fe2a31c0d82 /opt/tritonserver/bin/../lib/libtritonserver.so(+0x3ded82) [0x7fe2a31c0d82]
+21      0x7fe2a284f253 /usr/lib/x86_64-linux-gnu/libstdc++.so.6(+0xdc253) [0x7fe2a284f253]
+22      0x7fe2a25deac3 /usr/lib/x86_64-linux-gnu/libc.so.6(+0x94ac3) [0x7fe2a25deac3]
+23      0x7fe2a2670850 /usr/lib/x86_64-linux-gnu/libc.so.6(+0x126850) [0x7fe2a2670850]
+E0415 18:16:24.818434 246 model_lifecycle.cc:621] failed to load 'trt_llm' version 1: Internal: unexpected error when creating modelInstanceState: [TensorRT-LLM][ERROR] Assertion failed: Failed to deserialize cuda engine (/app/tensorrt_llm/cpp/tensorrt_llm/runtime/tllmRuntime.cpp:72)
+1       0x7fe1e02614ba tensorrt_llm::common::throwRuntimeError(char const*, int, std::string const&) + 102
+2       0x7fe1e02850a0 /opt/tritonserver/backends/tensorrtllm/libtensorrt_llm.so(+0x79c0a0) [0x7fe1e02850a0]
+3       0x7fe1e214f742 tensorrt_llm::batch_manager::TrtGptModelInflightBatching::TrtGptModelInflightBatching(int, std::shared_ptr<nvinfer1::ILogger>, tensorrt_llm::runtime::GptModelConfig const&, tensorrt_llm::runtime::WorldConfig const&, std::vector<unsigned char, std::allocator<unsigned char> > const&, bool, tensorrt_llm::batch_manager::batch_scheduler::SchedulerPolicy, tensorrt_llm::batch_manager::TrtGptModelOptionalParams const&) + 1138
+4       0x7fe1e2125977 tensorrt_llm::batch_manager::TrtGptModelFactory::create(std::filesystem::path const&, tensorrt_llm::batch_manager::TrtGptModelType, int, tensorrt_llm::batch_manager::batch_scheduler::SchedulerPolicy, tensorrt_llm::batch_manager::TrtGptModelOptionalParams const&) + 1687
+5       0x7fe1e211ce00 tensorrt_llm::batch_manager::GptManager::GptManager(std::filesystem::path const&, tensorrt_llm::batch_manager::TrtGptModelType, int, tensorrt_llm::batch_manager::batch_scheduler::SchedulerPolicy, std::function<std::list<std::shared_ptr<tensorrt_llm::batch_manager::InferenceRequest>, std::allocator<std::shared_ptr<tensorrt_llm::batch_manager::InferenceRequest> > > (int)>, std::function<void (unsigned long, std::list<tensorrt_llm::batch_manager::NamedTensor, std::allocator<tensorrt_llm::batch_manager::NamedTensor> > const&, bool, std::string const&)>, std::function<std::unordered_set<unsigned long, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<unsigned long> > ()>, std::function<void (std::string const&)>, tensorrt_llm::batch_manager::TrtGptModelOptionalParams const&, std::optional<unsigned long>, std::optional<int>, bool) + 336
+6       0x7fe290211b62 /opt/tritonserver/backends/tensorrtllm/libtriton_tensorrtllm.so(+0x18b62) [0x7fe290211b62]
+7       0x7fe2902123f2 /opt/tritonserver/backends/tensorrtllm/libtriton_tensorrtllm.so(+0x193f2) [0x7fe2902123f2]
+8       0x7fe290204fd5 TRITONBACKEND_ModelInstanceInitialize + 101
+9       0x7fe2a2f89226 /opt/tritonserver/bin/../lib/libtritonserver.so(+0x1a7226) [0x7fe2a2f89226]
+10      0x7fe2a2f8a466 /opt/tritonserver/bin/../lib/libtritonserver.so(+0x1a8466) [0x7fe2a2f8a466]
+11      0x7fe2a2f6d165 /opt/tritonserver/bin/../lib/libtritonserver.so(+0x18b165) [0x7fe2a2f6d165]
+12      0x7fe2a2f6d7a6 /opt/tritonserver/bin/../lib/libtritonserver.so(+0x18b7a6) [0x7fe2a2f6d7a6]
+13      0x7fe2a2f79a1d /opt/tritonserver/bin/../lib/libtritonserver.so(+0x197a1d) [0x7fe2a2f79a1d]
+14      0x7fe2a25e3ee8 /usr/lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x7fe2a25e3ee8]
+15      0x7fe2a2f63feb /opt/tritonserver/bin/../lib/libtritonserver.so(+0x181feb) [0x7fe2a2f63feb]
+16      0x7fe2a2f73dc5 /opt/tritonserver/bin/../lib/libtritonserver.so(+0x191dc5) [0x7fe2a2f73dc5]
+17      0x7fe2a2f78d36 /opt/tritonserver/bin/../lib/libtritonserver.so(+0x196d36) [0x7fe2a2f78d36]
+18      0x7fe2a3069330 /opt/tritonserver/bin/../lib/libtritonserver.so(+0x287330) [0x7fe2a3069330]
+19      0x7fe2a306ca23 /opt/tritonserver/bin/../lib/libtritonserver.so(+0x28aa23) [0x7fe2a306ca23]
+20      0x7fe2a31c0d82 /opt/tritonserver/bin/../lib/libtritonserver.so(+0x3ded82) [0x7fe2a31c0d82]
+21      0x7fe2a284f253 /usr/lib/x86_64-linux-gnu/libstdc++.so.6(+0xdc253) [0x7fe2a284f253]
+22      0x7fe2a25deac3 /usr/lib/x86_64-linux-gnu/libc.so.6(+0x94ac3) [0x7fe2a25deac3]
+23      0x7fe2a2670850 /usr/lib/x86_64-linux-gnu/libc.so.6(+0x126850) [0x7fe2a2670850]
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:16:25,388388", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:16:25,402402", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/triton/preprocessing/preprocessor.py", "line_number": 626, "request_id": "None", "time": "2024-04-15 18:16:25,880880", "message": "Cleaning up..."}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/triton/postprocessing/postprocessor.py", "line_number": 86, "request_id": "None", "time": "2024-04-15 18:16:25,881881", "message": "Cleaning up..."}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/triton/llm_pipeline/trt_pipeline.py", "line_number": 401, "request_id": "None", "time": "2024-04-15 18:16:25,881881", "message": "Cleaning up..."}
+error: creating server: Internal - failed to load all models
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[7400,1],0]
+  Exit code:    1
+--------------------------------------------------------------------------
+Triton command return code: {triton_return_code}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:16:35,398398", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:16:35,413413", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:16:45,409409", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:16:45,423423", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:16:55,420420", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:16:55,433433", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:17:05,430430", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:17:05,444444", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:17:15,441441", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:17:15,449449", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:17:25,449449", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:17:25,460460", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:17:35,460460", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:17:35,470470", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:17:45,470470", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}
+{"level": "INFO", "file_path": "/usr/local/lib/python3.10/dist-packages/nemollm_inference/sdk/engines/async_streaming_triton_grpc.py", "line_number": 99, "request_id": "None", "time": "2024-04-15 18:17:45,481481", "message": "Waiting for model `llama-2-7b-chat` to load : [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:0.0.0.0:8001: Failed to connect to remote host: Connection refused"}

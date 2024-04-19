@@ -1,0 +1,57 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  annotations:
+    serving.knative.openshift.io/enablePassthrough: "true"
+    sidecar.istio.io/inject: "true"
+    sidecar.istio.io/rewriteAppHTTPProbers: "true"
+  name: is-nim
+  namespace: kserve-test
+spec:
+  predictor:
+    imagePullSecrets: 
+      - name: mpaulgreen-mpaulrobo-pull-secret
+    tolerations:
+      - key:  odh-notebook
+        value: 'true'
+        effect: NoSchedule
+    volumes:
+      - name: model-store
+        emptyDir: {}
+      - name: cache
+        emptyDir: {}
+    serviceAccountName: sa-s3
+    containers:
+    - args:
+        - /runme.sh
+        - nemollm_inference_ms
+        - --model=llama-2-7b-chat
+        - --openai_port=8080
+        - --nemo_port=8004
+        - --num_gpus=1
+        - --health_port=8012
+      env:
+        - name: STORAGE_URI
+          value: s3://models/model-store
+      name: kserve-container
+      image: quay.io/mpaulgreen/nim-kserve-poc:dev-24.02.1
+      imagePullPolicy: IfNotPresent
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "12"
+          memory: 256Gi
+          nvidia.com/gpu: "1"
+        requests:
+          cpu: "12"
+          memory: 128Gi
+          nvidia.com/gpu: "1"
+      volumeMounts:
+        - name: model-store
+          readOnly: false
+          mountPath: /model-store
+        - name: cache
+          readOnly: false
+          mountPath: /.cache/huggingface/hub

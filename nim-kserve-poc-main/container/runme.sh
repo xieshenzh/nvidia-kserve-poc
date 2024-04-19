@@ -1,3 +1,3 @@
 #!/bin/bash
-echo "Running ${@}"
+ln -s /mnt/models/* /model-store/
 ${@}

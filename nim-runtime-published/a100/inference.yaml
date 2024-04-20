@@ -5,13 +5,13 @@ metadata:
     serving.knative.openshift.io/enablePassthrough: "true"
     sidecar.istio.io/inject: "true"
     sidecar.istio.io/rewriteAppHTTPProbers: "true"
-    autoscaling.knative.dev/target: "1" # auto-scaling annotation
-  name: is-nim
+    autoscaling.knative.dev/target: "1" # auto-scaling annotation  name: is-nim
   namespace: kserve-test
+  name: is-nim
 spec:
   predictor:
     imagePullSecrets: 
-      - name: mpaulgreen-mpaulrobo-pull-secret
+      - name: registry-secret
     tolerations:
       - key:  odh-notebook
         value: 'true'
@@ -23,24 +23,24 @@ spec:
         emptyDir: {}
     serviceAccountName: sa-s3
     containers:
-    - args:
-        - /runme.sh
-        - nemollm_inference_ms
-        - --model=llama-2-7b-chat
-        - --openai_port=8080
-        - --num_gpus=1
-        - --health_port=8088
+    - command: ["/bin/sh", "-c"]
+      args:
+        - |
+          ln -s /mnt/models/* /model-store/; \
+          nemollm_inference_ms \
+            --num_gpus=1 \
+            --model=llama-2-7b-chat \
+            --openai_port=8080 \
+            --health_port=8088
       env:
         - name: STORAGE_URI
           value: s3://models/model-store
       name: kserve-container
-      image: quay.io/mpaulgreen/nim-kserve-poc:24.01
+      image: nvcr.io/ohlfw0olaadg/ea-participants/nemollm-inference-ms:24.01
       imagePullPolicy: IfNotPresent
       ports:
       - containerPort: 8080
         protocol: TCP
-      # - containerPort: 8088
-      #   protocol: TCP
       resources:
         limits:
           cpu: "12"

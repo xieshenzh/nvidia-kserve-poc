@@ -1,0 +1,58 @@
+apiVersion: serving.kserve.io/v1alpha1
+kind: ServingRuntime
+labels:
+  opendatahub.io/dashboard: "true"
+metadata:
+  name: kserve-llm-nvidia-nim
+  labels:
+    name: kserve-llm-nvidia-nim
+  annotations:
+    opendatahub.io/recommended-accelerators: '["nvidia.com/gpu"]'
+    openshift.io/display-name: Nvidia Inference Microservice
+spec:
+  volumes:
+    - name: model-store
+      emptyDir: {}
+    - name: cache
+      emptyDir: {}
+  supportedModelFormats:
+    - name: llm-nvidia-nim
+      version: "1"
+      autoSelect: true
+      priority: 1
+  protocolVersions:
+    - v2
+    - grpc-v2
+  multiModel: false
+  imagePullSecrets: 
+    - name: registry-secret
+  containers:
+    - name: kserve-container
+      image: nvcr.io/ohlfw0olaadg/ea-participants/nemollm-inference-ms:24.01
+      ports:
+        - containerPort: 8080 # TODO, get this working
+          protocol: TCP
+    - command: ["/bin/sh", "-c"]
+      args:
+        - |
+          ln -s /mnt/models/* /model-store/; \
+          nemollm_inference_ms \
+            --num_gpus=1 \
+            --model={{.Name}} \
+            --openai_port=8080 \
+            --health_port=8088
+      imagePullPolicy: IfNotPresent
+      volumeMounts:
+        - name: model-store
+          readOnly: false
+          mountPath: /model-store
+        - name: cache
+          readOnly: false
+          mountPath: /.cache/huggingface/hub
+      resources: # TODO: GPU Resource Requests should go in the model
+        requests:
+          cpu: "12"
+          memory: 128Gi
+        limits:
+          cpu: "12"
+          memory: 256Gi

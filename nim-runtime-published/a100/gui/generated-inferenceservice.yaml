@@ -1,0 +1,38 @@
+# generated info deleted - from this file.
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  annotations:
+    openshift.io/display-name: llama-2-7b-chat
+    serving.knative.openshift.io/enablePassthrough: "true"
+    sidecar.istio.io/inject: "true"
+    sidecar.istio.io/rewriteAppHTTPProbers: "true"
+  labels:
+    opendatahub.io/dashboard: "true"
+  name: llama-2-7b-chat
+  namespace: nim-kserve
+spec:
+  predictor:
+    maxReplicas: 1
+    minReplicas: 1
+    model:
+      modelFormat:
+        name: llm-nvidia-nim
+        version: "1"
+      name: ""
+      resources:
+        limits:
+          nvidia.com/gpu: "1"
+        requests:
+          nvidia.com/gpu: "1"
+      runtime: llama-2-7b-chat
+      storage:
+        key: aws-connection-models
+        path: model-store
+    tolerations:
+    - effect: NoSchedule
+      key: nvidia.com/gpu
+      operator: Exists
+    - effect: NoSchedule
+      key: odh-notebook
+      operator: Exists

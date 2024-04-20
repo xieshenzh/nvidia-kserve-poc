@@ -1,3 +1,4 @@
+# This inference service is generated when you deploy using Openshift AI GUI using deploy models
 # generated info deleted - from this file.
 apiVersion: serving.kserve.io/v1beta1
 kind: InferenceService

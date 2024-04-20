@@ -32,7 +32,7 @@ spec:
       ports:
         - containerPort: 8080 # TODO, get this working
           protocol: TCP
-    - command: ["/bin/sh", "-c"]
+      command: ["/bin/sh", "-c"]
       args:
         - |
           ln -s /mnt/models/* /model-store/; \
@@ -49,7 +49,8 @@ spec:
         - name: cache
           readOnly: false
           mountPath: /.cache/huggingface/hub
-      resources: # TODO: GPU Resource Requests should go in the model
+      # INFO: : Resources and GPU Quantity defaults should be overriden on a per-model basis    
+      resources:
         requests:
           cpu: "12"
           memory: 128Gi

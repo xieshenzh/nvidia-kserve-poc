@@ -1,0 +1,7 @@
+{
+    "model": "mistral-7b-instruct",
+    "messages": [{"role":"user","content":"where do I go in florence, italy"}],
+    "temperature": 0.5,   
+    "max_tokens": 1024,
+    "stream": true                
+}

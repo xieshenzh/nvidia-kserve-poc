@@ -1,0 +1,7 @@
+{
+    "model": "llama-2-7b-chat",
+    "messages": [{"role":"user","content":"write an essay of 500 words on toronto"}],
+    "temperature": 0.5,   
+    "max_tokens": 1024,
+    "stream": true                
+  }

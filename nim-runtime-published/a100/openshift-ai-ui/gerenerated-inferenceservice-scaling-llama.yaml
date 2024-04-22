@@ -1,0 +1,38 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  annotations:
+    autoscaling.knative.dev/target: '1' # for autoscaling # needs to be set from openshift console
+    openshift.io/display-name: llama-2-7b-chat
+    serving.knative.openshift.io/enablePassthrough: 'true'
+    sidecar.istio.io/inject: 'true'
+    sidecar.istio.io/rewriteAppHTTPProbers: 'true'
+  name: llama-2-7b-chat
+  namespace: llama
+  labels:
+    opendatahub.io/dashboard: 'true'
+spec:
+  predictor:
+    maxReplicas: 10 # needs to be set from openshift console
+    minReplicas: 1 # needs to be set from openshift console
+    model:
+      modelFormat:
+        name: llm-nvidia-nim
+        version: '1'
+      name: ''
+      resources:
+        limits:
+          nvidia.com/gpu: '1'
+        requests:
+          nvidia.com/gpu: '1'
+      runtime: llama-2-7b-chat
+      storage:
+        key: aws-connection-llama
+        path: model-store
+    tolerations:
+      - effect: NoSchedule
+        key: nvidia.com/gpu
+        operator: Exists
+      - effect: NoSchedule
+        key: odh-notebook
+        operator: Exists

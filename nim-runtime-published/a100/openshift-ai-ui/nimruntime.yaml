@@ -10,7 +10,7 @@ metadata:
     opendatahub.io/recommended-accelerators: '["nvidia.com/gpu"]'
     openshift.io/display-name: Nvidia Inference Microservice
 spec:
-  # Path storage: This is a patch since Openshift AI expects the model to be mounted on /mnt/models and NIM image mounts the model in /mnt/model-store
+  # Path storage: This is a patch since Openshift AI expects the model to be mounted on /mnt/models and NIM image mounts the model in /model-store
   # NVIDIA is planning to have a startup parameter like --model-store=/mnt/models in future versions    
   volumes:
     - name: model-store

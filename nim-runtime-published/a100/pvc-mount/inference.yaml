@@ -1,0 +1,37 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: llama-2-7b-chat
+  namespace: pvc-llama
+  annotations:
+    serving.knative.openshift.io/enablePassthrough: "true"
+    sidecar.istio.io/inject: "true"
+    sidecar.istio.io/rewriteAppHTTPProbers: "true"
+    ngc_model_location: "ohlfw0olaadg/ea-participants/llama-2-7b:LLAMA-2-7B-4K-FP16-1-A100.24.01" # Currently stored for reference
+    nim_model_name: "llama-2-7b-chat" # The name used when making API calls into the model
+    autoscaling.knative.dev/target: "1"
+spec:
+  predictor:
+    containerConcurrency: 2
+    maxReplicas: 5
+    minReplicas: 1
+    tolerations:
+    - effect: NoSchedule
+      key: nvidia.com/gpu
+      operator: Exists
+    - effect: NoSchedule
+      key: odh-notebook
+      operator: Exists
+    nodeSelector:
+      node.kubernetes.io/instance-type: p4d.24xlarge
+    model:
+      modelFormat:
+        name: nvidia-nim-llm 
+      storageUri: "pvc://nim-pvc/llama-2-7b-chat_vLLAMA-2-7B-CHAT-4K-FP16-1-A100.24.01/model-store"
+      # INFO: at authorship the latest NIM llama2-7b-chat model was built for 24.01, update this based of the tag of the model downloaded from NGC
+      runtime: nvidia-nim-llm-24.01
+      resources:
+        limits:
+          nvidia.com/gpu: 1
+        requests:
+          nvidia.com/gpu: 1

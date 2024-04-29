@@ -1,0 +1,66 @@
+apiVersion: serving.kserve.io/v1alpha1
+kind: ServingRuntime
+metadata:
+  name: nvidia-nim-llm-24.01
+  namespace: pvc-llama
+  annotations:
+    opendatahub.io/recommended-accelerators: '["nvidia.com/gpu"]'
+spec:
+  volumes:
+    - name: model-store
+      emptyDir: {}
+    - name: cache
+      emptyDir: {}
+    - name: dshm
+      emptyDir:
+        medium: Memory
+        sizeLimit: "10Gi"
+  annotations:
+    prometheus.kserve.io/port: '9090'
+    prometheus.kserve.io/path: "/metrics"
+  nodeSelector:
+    node.kubernetes.io/instance-type: p4d.24xlarge
+  supportedModelFormats:
+    - name: nvidia-nim-llm
+      version: "24.01"
+      autoSelect: true
+      priority: 1
+  protocolVersions:
+    - v2
+    - grpc-v2
+  imagePullSecrets:
+    - name: registry-secret
+  containers:
+    - name: kserve-container
+      image: nvcr.io/ohlfw0olaadg/ea-participants/nemollm-inference-ms:24.01
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+      command: ["/bin/sh", "-c"]
+      args:
+        - |
+          ln -s /mnt/models/* /model-store/; \
+          nemollm_inference_ms \
+            --num_gpus=1 \
+            --model={{.Annotations.nim_model_name}} \
+            --openai_port=8080 \
+            --health_port=8088
+      # INFO: : Resources and GPU Quantity defaults should be overriden on a per-model basis
+      resources: 
+        requests:
+          nvidia.com/gpu: 1
+          cpu: "10"
+          memory: 128Gi
+        limits:
+          nvidia.com/gpu: 1
+          cpu: "10"
+          memory: 256Gi
+      volumeMounts:
+        - name: dshm
+          mountPath: /dev/shm
+        - name: model-store
+          readOnly: false
+          mountPath: /model-store
+        - name: cache
+          readOnly: false
+          mountPath: /.cache/huggingface/hub

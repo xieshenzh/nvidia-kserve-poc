@@ -17,7 +17,8 @@
 
 
 ### Issue 3 - Disk pressure & OOMKilled
-- Currently models are mounted on ephermal volumes of kserve-container  and as you create more replicas it results in disk pressure on the nodes. The storage-initializer pod is being terminated(OOMKilled) due to insufficient capacity assigned by node to ephermal storage
+- Currently models are mounted on ephermal volumes of kserve-container  and as you create more replicas it results in disk pressure on the nodes. The storage-initializer containeris being terminated(OOMKilled) due to insufficient capacity assigned by node to ephermal storage
+- Resolution - It is only seen when the models are loaded from s3 storage. When the models are mounted directly from PVC, this behavior was not seen. Keeping this open to keep observing for large models.
 
 ### Issue 4 - Pods take too long to start up
 - NIM pods takes too long to start up. This is an issue if we have to address scalability. 

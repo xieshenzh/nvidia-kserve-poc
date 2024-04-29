@@ -1,0 +1,54 @@
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: ngcpull
+  namespace: pvc-llama
+spec:
+  template:
+    spec:
+      nodeSelector:
+        node.kubernetes.io/instance-type: p4d.24xlarge
+      imagePullSecrets:
+        - name: mpaulgreen-mpaulrobo-pull-secret
+      restartPolicy: Never
+      containers:
+        - resources: {}
+          name: main
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              /scripts/ngc-pull.sh;
+          volumeMounts:
+            - name: my-pvc
+              mountPath: /mnt/models
+          image: quay.io/mpaulgreen/ngc-pull:0.5
+          imagePullPolicy: Always
+          env:
+          - name: STORE_MOUNT_PATH
+            value: /mnt/models
+          - name: NGC_CLI_ORG
+            value: ohlfw0olaadg
+          - name: NGC_CLI_TEAM
+            value: ea-participants
+          - name: NGC_CLI_VERSION
+            value: 3.41.3
+          - name: NGC_MODEL_NAME
+            value: llama-2-7b-chat
+          - name: NGC_MODEL_VERSION
+            value: LLAMA-2-7B-CHAT-4K-FP16-1-A100.24.01
+          - name: MODEL_NAME
+            value: llama-2-7b-chat
+      volumes:
+        - name: my-pvc
+          persistentVolumeClaim:
+            claimName: nim-pvc
+      tolerations:
+        - key: nvidia.com/gpu
+          operator: Exists
+          effect: NoSchedule
+        - key: odh-notebook
+          operator: Exists
+          effect: NoSchedule
+        - key: a100
+          operator: Exists
+          effect: NoSchedule      

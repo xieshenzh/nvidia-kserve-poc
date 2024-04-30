@@ -1,0 +1,44 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: pvc-access
+  namespace: pvc-llama
+spec:
+  serviceAccountName: job-robot
+  imagePullSecrets: 
+    - name: registry-secret
+    - name: mpaulgreen-mpaulrobo-pull-secret
+  nodeSelector:
+    node.kubernetes.io/instance-type: p4d.24xlarge
+  containers:
+    - resources: {}
+      name: main
+      command: ["/bin/sh", "-c"]
+      args:
+        - |
+          /scripts/main.py; \
+          sleep 10000
+      image: quay.io/mpaulgreen/ngc-job:0.6
+      imagePullPolicy: Always
+      env:
+      - name: STORE_MOUNT_PATH
+        value: /mnt/models
+      - name: NGC_CLI_ORG
+        value: ohlfw0olaadg
+      - name: NGC_CLI_TEAM
+        value: ea-participants
+      - name: NGC_CLI_VERSION
+        value: 3.41.3
+      - name: NGC_MODEL_NAME
+        value: llama-2-7b-chat
+      - name: NGC_MODEL_VERSION
+        value: LLAMA-2-7B-CHAT-4K-FP16-1-A100.24.01
+      - name: NGC_PVC
+        value: nim-pvc
+  tolerations:
+    - key: nvidia.com/gpu
+      operator: Exists
+      effect: NoSchedule
+    - key: odh-notebook
+      operator: Exists
+      effect: NoSchedule

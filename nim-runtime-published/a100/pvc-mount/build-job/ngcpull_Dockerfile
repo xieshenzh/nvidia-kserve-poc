@@ -1,0 +1,20 @@
+FROM registry.access.redhat.com/ubi9/python-311:1-52.1712567218
+USER 0
+
+COPY ngc-pull.sh /scripts/ngc-pull.sh
+
+#TODO: Use ENV variables
+COPY config /opt/app-root/src/.ngc/config 
+
+RUN yum install unzip wget -y && \
+    chmod +x /scripts/ngc-pull.sh
+
+
+ENV NGC_CLI_VERSION=version \
+    STORE_MOUNT_PATH=path \
+    NGC_CLI_ORG=org \
+    NGC_CLI_TEAM=team \
+    NGC_MODEL_NAME=model-name \
+    NGC_MODEL_VERSION=model-version
+
+USER 1000

@@ -1,0 +1,9 @@
+FROM registry.access.redhat.com/ubi9/python-311:1-52.1712567218
+USER 0
+
+COPY main.py /scripts/main.py
+COPY requirements.txt /scripts/requirements.txt
+
+RUN pip3 install -r /scripts/requirements.txt
+
+USER 1000

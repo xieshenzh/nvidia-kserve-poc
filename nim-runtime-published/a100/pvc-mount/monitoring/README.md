@@ -15,6 +15,7 @@ oc apply -f podmonitor.yaml
 oc apply -f model-podmonitor.yaml
 ```
 
+![Metrics](./metrics.png?raw=true "Title")
 
 #### Potential Technical Debt
 - The metrics took a while in showing up. It should have take just over 30s - Assign

@@ -13,3 +13,4 @@ a100-local/
 storage-initializer/
 nim-runtime-published/a100/pvc-mount/build-job/config
 a-logistics/
+.DS_Store

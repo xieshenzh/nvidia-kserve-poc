@@ -31,7 +31,7 @@ spec:
   containers:
     - name: kserve-container
       # image: nvcr.io/ohlfw0olaadg/ea-participants/nemollm-inference-ms:24.01
-      # The above image was removed by NVIDIA on May1, 2024
+      # The above image is no longer available from May1, 2024
       image: nvcr.io/nvaie/nemollm-inference-ms:24.01 
       ports:
         - containerPort: 8080

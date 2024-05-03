@@ -16,10 +16,8 @@ spec:
         medium: Memory
         sizeLimit: "10Gi"
   annotations:
-    prometheus.kserve.io/port: '9090'
-    prometheus.kserve.io/path: "/metrics"
-  nodeSelector:
-    node.kubernetes.io/instance-type: p4d.24xlarge
+    prometheus.io/port: '8002'
+    prometheus.io/path: /metrics
   supportedModelFormats:
     - name: nvidia-nim-llm
       version: "24.01"
@@ -32,7 +30,9 @@ spec:
     - name: registry-secret
   containers:
     - name: kserve-container
-      image: nvcr.io/ohlfw0olaadg/ea-participants/nemollm-inference-ms:24.01
+      # image: nvcr.io/ohlfw0olaadg/ea-participants/nemollm-inference-ms:24.01
+      # The above image was removed by NVIDIA on May1, 2024
+      image: nvcr.io/nvaie/nemollm-inference-ms:24.01 
       ports:
         - containerPort: 8080
           protocol: TCP
